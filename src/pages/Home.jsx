@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../client";
 
-export default function Home({ token }) {
+export default function Home({ token, setToken }) {
   let navigate = useNavigate();
   async function handleLogout() {
-    sessionStorage.removeItem("token");
+    sessionStorage.clear();
+    localStorage.clear();
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
     navigate("/");
@@ -13,7 +14,7 @@ export default function Home({ token }) {
   // let teamname = token.session.user.user_metadata.teamname;
   return (
     <>
-      <h1>Welcome to homescreen @</h1>
+      {token && <h1>Welcome to homescreen @</h1>}
 
       <button onClick={handleLogout}>Logout</button>
     </>

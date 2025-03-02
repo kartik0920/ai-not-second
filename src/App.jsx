@@ -1,5 +1,5 @@
 import { SignUpPage, SignInPage, Home } from "./pages/index";
-import { Route, Routes } from "react-router-dom";
+import { redirect, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import { useEffect, useState } from "react";
 
@@ -15,7 +15,14 @@ function App() {
       let data = JSON.parse(sessionStorage.getItem("token"));
       setToken(data);
     }
+    if (localStorage.getItem("sb-iqttuxapydnhjecbfpch-auth-token")) {
+      let data = JSON.parse(
+        localStorage.getItem("sb-iqttuxapydnhjecbfpch-auth-token")
+      );
+      setToken(data);
+    }
   }, []);
+
   return (
     <>
       <Routes>
