@@ -1,18 +1,35 @@
 import React, { useState } from "react";
 import { quizQuestions } from "./Data";
-import { useNavigate } from "react-router";
+import { redirect, replace, useNavigate } from "react-router";
+let temp = 0;
 
-export default function QuizPart({ setScore }) {
+export default function QuizPart() {
+  let navigate = useNavigate();
+  let size = quizQuestions.length;
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-  const handleSelectedAnswer = (value) => {
-    console.log(value);
-    setSelectedAnswer(value);
+  const handleSelectedAnswer = (e) => {
+    let x = e.target.value;
+
+    setSelectedAnswer(x);
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = (e) => {
+    e.preventDefault();
+    let check = selectedAnswer === "ai";
+
+    if (check === quizQuestions[currentQuestionIndex].answer) {
+      temp = temp + 1;
+    }
+    console.log(temp);
+
     setCurrentQuestionIndex(currentQuestionIndex + 1);
+    if (currentQuestionIndex === size - 1) {
+      navigate("../leaderboard", { replace: true });
+    }
+
     setSelectedAnswer(null);
   };
 
@@ -23,7 +40,7 @@ export default function QuizPart({ setScore }) {
         <div className="options">
           <label>
             <input
-              onClick={(e) => handleSelectedAnswer(e.target.value)}
+              onClick={(e) => handleSelectedAnswer(e)}
               type="radio"
               name="ai"
               value="ai"
@@ -34,7 +51,7 @@ export default function QuizPart({ setScore }) {
           </label>
           <label>
             <input
-              onClick={(e) => handleSelectedAnswer(e.target.value)}
+              onClick={(e) => handleSelectedAnswer(e)}
               type="radio"
               name="ai"
               value="not-ai"
