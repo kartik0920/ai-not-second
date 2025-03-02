@@ -24,27 +24,6 @@ export default function SignInPage({ setToken }) {
     });
   }
 
-  async function googleSignin(e) {
-    e.preventDefault();
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: {
-          queryParams: {
-            access_type: "offline",
-            prompt: "consent",
-          },
-        },
-      });
-
-      if (error) throw error;
-
-      // navigate("/home");
-    } catch (error) {
-      alert(error);
-    }
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
     try {
