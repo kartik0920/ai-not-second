@@ -103,17 +103,6 @@ export default function SignInPage({ setToken }) {
           </button>
         </form>
         <form>
-          <div className="or-container">
-            <div className="line"></div>
-            <span className="or-text">OR</span>
-            <div className="line"></div>
-          </div>
-
-          <button className="google-signin-btn" onClick={googleSignin}>
-            <img src={googleLogo} alt="Google Logo" className="google-logo" />
-            Sign In With Google
-          </button>
-
           <div className="signup-option">
             <p>
               Don't have an account? <a href="/signup">Sign Up</a>
