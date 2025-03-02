@@ -58,7 +58,7 @@ export default function SignUp() {
         <form action="">
           <div className="input-div team-name-input">
             <label htmlFor="team-name">Team Name</label>
-            <input
+            <input 
               type="text"
               id="team-name"
               name="teamname"

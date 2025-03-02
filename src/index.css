@@ -20,6 +20,7 @@ body {
   background-color: #efeefc;
   height: 6.563rem;
   position: relative;
+  
 }
 
 /* Adding css to font inside of navbar */
@@ -33,6 +34,21 @@ body {
   font-weight: 500;
   font-size: 2.732rem;
   line-height: 2.549rem;
+  cursor: pointer;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+.mainNavBar{
+  margin-inline: auto;
+}
+.navbar-login a{
+  text-decoration: none;
+  color: black;
+  width: 400px;
+}
+.navbar-login img{
+ width:400px;
 }
 
 .title-signin {

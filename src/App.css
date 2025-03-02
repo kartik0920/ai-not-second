@@ -34,6 +34,11 @@ html {
   /* width: 100%; */
 }
 
+.navbar-login a{
+  text-decoration: none;
+  color: black;
+}
+
 .ai-or-not {
   height: 50px;
   text-align: center;
@@ -105,6 +110,7 @@ html {
   padding: 0.8rem;
   border-radius: var(--border-radius);
   letter-spacing: 2px;
+  cursor: pointer;
 }
 
 .getOtpButton:hover {
