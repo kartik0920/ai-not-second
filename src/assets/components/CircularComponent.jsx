@@ -1,6 +1,6 @@
 import React from "react";
 
-const RotatingCircles = ({className}) => {
+const CircularComponent = ({className}) => {
   return (
     <svg className={`rotating-svg ${className}`} viewBox="0 0 300 300">
       <g transform="translate(150,150)">
@@ -14,4 +14,4 @@ const RotatingCircles = ({className}) => {
   );
 };
 
-export default RotatingCircles;
+export default CircularComponent;

@@ -1,0 +1,203 @@
+html{
+    --base-color: white;
+    --second-base-color: black;
+    --primary-color: #efeefc;
+    --button-color: #6d28d9;
+    --border-color:#c7acef;
+    --link-color: #8856de;
+    --light-shade: #858494;
+    --border-radius: 12px;
+  }
+
+  *{
+    box-sizing: border-box;
+  }
+
+
+  .leader-winner-container{
+    /* margin-top: 0.7rem; */
+    width: 100vw;
+    padding-inline: 2rem;
+    padding-top: 0.7rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.leaderBoardComp{
+    width: 350px;
+    background-color: var(--primary-color);
+    /* margin-right: 2rem; */
+    border-radius: var(--border-radius);
+    padding: 0.8rem 2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.headContentLeader{
+    width: 100%;
+    display: flex;
+    margin: 0;
+}
+
+.heading{
+    margin: 0;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+}
+
+.humanImages{
+    /* width: 40%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.humanImages img{
+    width: 50px;
+}
+
+.manImage{
+    /* margin-bottom: 13px; */
+    position: relative;
+    top: -20px;
+    left: -10px;
+}
+
+.girlImage{
+    position: relative;
+    top: 10px;
+    left: 50px;
+}
+
+.ranker{
+    width: 100%;
+    background-color: var(--base-color);
+    border-radius: var(--border-radius);
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+
+.rank{
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--light-shade);
+    border-radius: 50%;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-name{
+    font-weight: bold;
+}
+
+.points{
+    color:var(--light-shade) ;
+}
+
+.firstRank{
+    border:1px solid #FFC403;
+    background: linear-gradient(to right, #FFE083, white);
+    /* background: linear-gradient(to right, #FFE083 30%, white 30%); */
+}
+
+.firstRank .rank {
+    border: 2px solid #FFC403;
+
+}
+
+.secondRank{
+    border:1px solid #FF9563;
+    background: linear-gradient(to right, #FFC6B3, white);
+}
+
+.secondRank .rank {
+    border: 2px solid #FF9563;
+
+}
+
+
+
+
+.oval{
+    border: 1px solid #8856de;
+    border-radius: 50%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+
+.leaderBoardComp .oval1{
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: -50px;
+    margin: 0;
+}
+
+.leaderBoardComp .oval2{
+    width: 90%;
+    height: 90%;
+}
+
+.leaderBoardComp .oval3{
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    bottom: -50px;
+    left: -40px;
+    margin: 0;
+}
+
+.leaderBoardComp .oval4{
+    width: 90%;
+    height: 90%;
+}
+
+
+/* Winner component CSS */
+
+.WinnerComponent{
+    max-width: 40%;
+    width: 100%;
+    height: 550px;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    margin-left: 2rem;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    padding-block: 2rem;
+
+}
+
+
+.winnerHead{
+    font-size: 6rem;
+    letter-spacing: 6px;
+    /* color: linear-gradient(to bottom, #9087E5, white); */
+    background: linear-gradient(to bottom,  #6F63D8, #CDC9F3);
+    -webkit-background-clip: text; /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Make text transparent */
+}
+
+
+.winnerCircle{
+    position: absolute;
+    top: -150px;
+    left: 170px;
+    transform: rotate(90deg);
+    max-width: 250px;
+    width: 100%;
+}

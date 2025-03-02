@@ -1,21 +1,28 @@
-import { useNavigate } from "react-router-dom";
-import { supabase } from "../client";
+import React from 'react'
+import InternalNavBar from '../assets/components/InternalNavBar'
+import '../assets/styles/LeaderBoard.css'
+import '../assets/styles/Home.css'
+import LeaderBoardComponent from '../assets/components/LeaderBoardComponent'
+import AIorNot from '../assets/components/AIorNot'
+import QuizPart from '../assets/components/QuizPart'
+import HomeAside from '../assets/components/HomeAside'
 
-export default function Home({ token }) {
-  let navigate = useNavigate();
-  async function handleLogout() {
-    sessionStorage.removeItem("token");
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
-    navigate("/");
-  }
-
-  // let teamname = token.session.user.user_metadata.teamname;
+export default function Home() {
   return (
     <>
-      <h1>Welcome to homescreen @</h1>
-
-      <button onClick={handleLogout}>Logout</button>
+        <InternalNavBar/>
+        
+        <main className='homeMain'>
+          <div className="rightSideContainer">
+          <AIorNot/>
+          <QuizPart/>
+          </div>
+        
+        <div className="leftSideContainer">
+        <HomeAside/>
+        <LeaderBoardComponent/>
+        </div>
+        </main>
     </>
-  );
+  )
 }

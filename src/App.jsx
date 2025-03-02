@@ -1,4 +1,4 @@
-import { SignUpPage, SignInPage, Home } from "./pages/index";
+import { SignUpPage, SignInPage, Home, LeaderBoard } from "./pages/index";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -22,6 +22,7 @@ function App() {
         <Route path={"/"} element={<SignInPage setToken={setToken} />} />
         <Route path={"/signup"} element={<SignUpPage />} />
         {token ? <Route path={"/home"} element={<Home token={token} />} /> : ""}
+        {token ? <Route path={"/leaderboard"} element={<LeaderBoard token={token} />} /> : ""}
       </Routes>
     </>
   );
