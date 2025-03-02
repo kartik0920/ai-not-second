@@ -7,10 +7,12 @@ import AIorNot from "../assets/components/AIorNot";
 import QuizPart from "../assets/components/QuizPart";
 import HomeAside from "../assets/components/HomeAside";
 import { quizQuestions } from "../assets/components/Data.js";
-
+import { temp } from "../assets/components/QuizPart";
 export default function Home() {
-  const [count, setCount] = useState(1);
-
+  const [correct, setCorrect] = useState(temp);
+  function handleCorrect(x) {
+    setCorrect(x);
+  }
   let total = quizQuestions.length;
   return (
     <>
@@ -19,11 +21,11 @@ export default function Home() {
       <main className="homeMain">
         <div className="rightSideContainer">
           <AIorNot />
-          <QuizPart />
+          <QuizPart handleCorrect={handleCorrect} />
         </div>
 
         <div className="leftSideContainer">
-          <HomeAside count={count} total={total} />
+          <HomeAside count={correct} total={total} />
           <LeaderBoardComponent />
         </div>
       </main>

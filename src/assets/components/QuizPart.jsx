@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { quizQuestions } from "./Data";
 import { redirect, replace, useNavigate } from "react-router";
-let temp = 0;
 
-export default function QuizPart() {
+export let temp = 0;
+
+export default function QuizPart({ handleCorrect }) {
   let navigate = useNavigate();
   let size = quizQuestions.length;
 
@@ -24,6 +25,7 @@ export default function QuizPart() {
       temp = temp + 1;
     }
     console.log(temp);
+    handleCorrect(temp);
 
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     if (currentQuestionIndex === size - 1) {
