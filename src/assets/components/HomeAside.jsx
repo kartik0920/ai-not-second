@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-export default function HomeAside({ correct, total }) {
+export default function HomeAside({ count, total }) {
   return (
     <aside className="sidebar">
       <div className="progress">
@@ -112,12 +112,12 @@ export default function HomeAside({ correct, total }) {
           </div> */}
           <div className="circle_div">
             <CircularProgressbar
-              value={(correct / total) * 100}
-              text={`${correct} / ${total} `}
+              value={(count / total) * 100}
+              text={`${count} / ${total} `}
               styles={buildStyles({
                 pathTransitionDuration: 0.5,
 
-                pathColor: `rgba(106, 90, 224,75), ${correct / total})`,
+                pathColor: `rgba(106, 90, 224,75), ${count / total})`,
                 textColor: "#6a5ae0",
 
                 backgroundColor: "#E8E5FA",
