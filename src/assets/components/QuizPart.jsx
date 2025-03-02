@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { quizQuestions } from "./Data";
 import { redirect, replace, useNavigate } from "react-router";
 
-export let temp = 0;
+export let score = 0;
 
 export default function QuizPart({ handleCorrect }) {
   let navigate = useNavigate();
@@ -22,10 +22,10 @@ export default function QuizPart({ handleCorrect }) {
     let check = selectedAnswer === "ai";
 
     if (check === quizQuestions[currentQuestionIndex].answer) {
-      temp = temp + 1;
+      score = score + 1;
     }
-    console.log(temp);
-    handleCorrect(temp);
+    console.log(score);
+    handleCorrect(score);
 
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     if (currentQuestionIndex === size - 1) {
