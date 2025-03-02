@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InternalNavBar from '../assets/components/InternalNavBar'
 import '../assets/styles/LeaderBoard.css'
 import '../assets/styles/Home.css'
@@ -8,6 +8,8 @@ import QuizPart from '../assets/components/QuizPart'
 import HomeAside from '../assets/components/HomeAside'
 
 export default function Home() {
+  const [score,setScore] = useState(0);
+
   return (
     <>
         <InternalNavBar/>
@@ -15,11 +17,11 @@ export default function Home() {
         <main className='homeMain'>
           <div className="rightSideContainer">
           <AIorNot/>
-          <QuizPart/>
+          <QuizPart setScore={setScore}/>
           </div>
         
         <div className="leftSideContainer">
-        <HomeAside/>
+        <HomeAside score={score}/>
         <LeaderBoardComponent/>
         </div>
         </main>

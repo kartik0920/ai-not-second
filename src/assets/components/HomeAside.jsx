@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function HomeAside() {
+export default function HomeAside({score}) {
   return (
     <aside className="sidebar">
       <div className="progress">
@@ -77,7 +77,7 @@ export default function HomeAside() {
           <div className="circle_div">
             <div className="score">
               <div className="score_data">
-                <h1>13</h1>
+                <h1>{score}</h1>
                 <h2>/20</h2>
               </div>
               <p>Correct</p>

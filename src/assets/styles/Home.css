@@ -9,13 +9,41 @@ html{
   }
 
 
-.navbar-login{
+  .internalNavBar{
     width: 100vw;
     padding-inline: 3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
+.navbar-login a{
+    text-decoration: none;
+    color: black;
+  }
+
+  .navbar-login a{
+    text-decoration: none;
+    color: black;
+    width: 400px;
+  }
+  .navbar-login img{
+   width:400px;
+  }
+
+  .profile-teamName{
+    width: 12%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .teamNameInHeader{
+    font-size: large;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
 
 .profile-icon-div{
     width: 40px;
