@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { quizQuestions } from "./Data";
 import { redirect, replace, useNavigate } from "react-router";
-let temp = 0;
+// let temp = 0;
 
-export default function QuizPart() {
+export default function QuizPart({setScore}) {
   let navigate = useNavigate();
   let size = quizQuestions.length;
 
@@ -21,9 +21,10 @@ export default function QuizPart() {
     let check = selectedAnswer === "ai";
 
     if (check === quizQuestions[currentQuestionIndex].answer) {
-      temp = temp + 1;
+      // temp = temp + 1;
+      setScore((prev) => prev + 1);
     }
-    console.log(temp);
+    // console.log(temp);
 
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     if (currentQuestionIndex === size - 1) {

@@ -10,6 +10,7 @@ import { quizQuestions } from "../assets/components/Data.js";
 
 export default function Home() {
   const [count, setCount] = useState(1);
+  const [score, setScore] = useState(0);
 
   let total = quizQuestions.length;
   return (
@@ -19,11 +20,11 @@ export default function Home() {
       <main className="homeMain">
         <div className="rightSideContainer">
           <AIorNot />
-          <QuizPart />
+          <QuizPart setScore={setScore} />
         </div>
 
         <div className="leftSideContainer">
-          <HomeAside count={count} total={total} />
+          <HomeAside count={count} total={score} />
           <LeaderBoardComponent />
         </div>
       </main>
