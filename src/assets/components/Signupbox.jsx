@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   let navigate = useNavigate();
+
   const [formData, setFormdata] = useState({
     teamname: "",
     email: "",
@@ -63,6 +64,7 @@ export default function SignUp() {
               name="teamname"
               onChange={handlechange}
               placeholder="Enter your team name"
+              required
             />
           </div>
 

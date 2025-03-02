@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic);
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
-body{
+body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -15,16 +15,16 @@ body{
   margin-inline: auto;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
-html{
+html {
   --base-color: white;
   --second-base-color: black;
   --primary-color: #efeefc;
   --button-color: #6d28d9;
-  --border-color:#c7acef;
+  --border-color: #c7acef;
   --link-color: #8856de;
   --border-radius: 12px;
 }
@@ -41,46 +41,44 @@ html{
   font-weight: bold;
   /* margin: 10px 0; */
   /* font-family: "Montserrat"; */
-  font-family: "Roboto" , sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-
-.signInPage{
+.signInPage {
   /* margin-top: 6.563rem; */
   width: 100vw;
   /* height: calc(100vh - 6.563rem - 50px  ); */
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
-.signInContainer{
+.signInContainer {
   background-color: var(--primary-color);
   max-width: 400px;
   width: 100%;
   padding: 0.5rem 2rem;
   border-radius: var(--border-radius);
-  font-family: "Open Sans",sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-.signInHead{
+.signInHead {
   text-align: center;
   font-size: large;
 }
 
-.input-div{
+.input-div {
   display: flex;
   flex-direction: column;
   margin-bottom: 0.8rem;
 }
 
-.input-div label{
+.input-div label {
   font-weight: bold;
   margin-bottom: 0.2rem;
 }
 
-.input-div input{
+.input-div input {
   padding: 0.8rem;
   border: 2px solid white;
   border-radius: var(--border-radius);
@@ -88,17 +86,16 @@ html{
   outline: none;
 }
 
-.input-div input:focus{
- border-color: var(--border-color);
+.input-div input:focus {
+  border-color: var(--border-color);
 }
 
-.input-div input::placeholder{
+.input-div input::placeholder {
   color: black;
   font-weight: 600;
 }
 
-
-.getOtpButton{
+.getOtpButton {
   font-size: large;
   font-weight: bold;
   background-color: var(--button-color);
@@ -110,7 +107,9 @@ html{
   letter-spacing: 2px;
 }
 
-
+.getOtpButton:hover {
+  cursor: pointer;
+}
 
 .or-container {
   display: flex;
@@ -122,17 +121,16 @@ html{
 .line {
   flex-grow: 1;
   height: 1px;
-  background-color: #ccc; 
+  background-color: #ccc;
 }
 
 .or-text {
   margin: 0 10px;
   font-weight: bold;
-  color: var(--second-base-color); 
+  color: var(--second-base-color);
 }
 
-
-.google-signin-btn{
+.google-signin-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,7 +155,6 @@ html{
   margin-right: 10px;
 }
 
-
 .signup-option {
   text-align: center;
   margin-top: 20px;
@@ -166,7 +163,7 @@ html{
 }
 
 .signup-option a {
-  color: var(--link-color) ;
+  color: var(--link-color);
   font-weight: bold;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
@@ -190,8 +187,13 @@ html{
   transform: translateX(-50%);
 }
 
-.secondCircle{
+.secondCircle {
   top: 120px;
   right: 50px;
   transform: translateX(60%);
+}
+
+.circle_div {
+  padding: 5%;
+  width: 150px;
 }

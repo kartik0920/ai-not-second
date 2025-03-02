@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { quizQuestions } from "./Data";
-import { options } from "./Data";
-import { replace, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function QuizPart() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   let navigate = useNavigate();
   let size = quizQuestions.length;
+  let lives = 3;
+  let correct = 0;
+
   return (
     <>
       <section className="game-section">
@@ -23,8 +25,9 @@ export default function QuizPart() {
         </div>
         <button
           onClick={() => {
-            if (currentQuestionIndex < size)
+            if (currentQuestionIndex < size) {
               setCurrentQuestionIndex(currentQuestionIndex + 1);
+            }
 
             if (currentQuestionIndex === size - 1) {
               navigate("../leaderboard", { replace: true });

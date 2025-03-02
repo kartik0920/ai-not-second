@@ -1,6 +1,8 @@
-import React from 'react'
+import React from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
-export default function HomeAside() {
+export default function HomeAside({ correct, total }) {
   return (
     <aside className="sidebar">
       <div className="progress">
@@ -74,14 +76,14 @@ export default function HomeAside() {
             </div>
           </div>
 
-          <div className="circle_div">
-            <div className="score">
+          {/* <div className="circle_div">
+            {/* <div className="score">
               <div className="score_data">
                 <h1>13</h1>
                 <h2>/20</h2>
               </div>
               <p>Correct</p>
-            </div>
+            </div> }
             <svg
               style={{ position: "absolute", top: 0, left: 0 }}
               width="140"
@@ -107,9 +109,23 @@ export default function HomeAside() {
                 strokeWidth="20"
               />
             </svg>
+          </div> */}
+          <div className="circle_div">
+            <CircularProgressbar
+              value={(correct / total) * 100}
+              text={`${correct} / ${total} `}
+              styles={buildStyles({
+                pathTransitionDuration: 0.5,
+
+                pathColor: `rgba(106, 90, 224,75), ${correct / total})`,
+                textColor: "#6a5ae0",
+
+                backgroundColor: "#E8E5FA",
+              })}
+            />
           </div>
         </div>
       </div>
     </aside>
-  )
+  );
 }
