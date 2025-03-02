@@ -8,27 +8,80 @@ import QuizPart from "../assets/components/QuizPart";
 import HomeAside from "../assets/components/HomeAside";
 import { quizQuestions } from "../assets/components/Data.js";
 import { score } from "../assets/components/QuizPart";
+import { useNavigate } from "react-router";
+import QuestionTimer from "../assets/components/QuestionTimer.jsx";
+
 export default function Home() {
+  let navigate = useNavigate();
   const [correct, setCorrect] = useState(score);
+  const [wrong, setWrong] = useState(3);
+  const [correctani, setCorrectani] = useState(false);
+  const [wrongani, setWrongani] = useState(false);
+  const wrongAudio = new Audio("../src/assets/resources/wrong.mp3");
+  const [index, setIndex] = useState(0);
+
+  function handleIndex(e) {
+    setIndex(e + 1);
+  }
+
+  function animateCorrect() {
+    setCorrectani(true);
+    setTimeout(() => {
+      setCorrectani(false);
+    }, 700);
+  }
+  function animateWrong() {
+    wrongAudio.play();
+    if (navigator.vibrate) {
+      navigator.vibrate(1000); // Vibrates for 1 second
+    }
+    setWrongani(true);
+    setTimeout(() => setWrongani(false), 1000);
+  }
+
   function handleCorrect(x) {
     setCorrect(x);
   }
+
+  function handleWrong(x) {
+    if (x === 0) {
+      navigate("/", { replace: true });
+      alert("You have lost. Try again Later!!");
+    }
+    setWrong(x);
+  }
+
   let total = quizQuestions.length;
   return (
-    <>
+    <div
+      className={`screen ${correctani ? "green-screen" : ""} 
+      ${wrongani ? "red-screen shake" : ""}`}
+    >
       <InternalNavBar />
 
       <main className="homeMain">
         <div className="rightSideContainer">
           <AIorNot />
-          <QuizPart handleCorrect={handleCorrect} />
+          <QuestionTimer index={index} />
+          <QuizPart
+            handleCorrect={handleCorrect}
+            handleWrong={handleWrong}
+            animationcorrect={animateCorrect}
+            animationwrong={animateWrong}
+            handleIndex={handleIndex}
+          />
         </div>
 
         <div className="leftSideContainer">
-          <HomeAside count={correct} total={total} />
+          <HomeAside
+            count={correct}
+            total={total}
+            wrong={wrong}
+            handleIndex={handleIndex}
+          />
           <LeaderBoardComponent />
         </div>
       </main>
-    </>
+    </div>
   );
 }

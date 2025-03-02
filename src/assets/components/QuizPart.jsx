@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import { quizQuestions } from "./Data";
-import { redirect, replace, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export let score = 0;
+export let lives = 3;
 
-export default function QuizPart({ handleCorrect }) {
+export default function QuizPart({
+  handleCorrect,
+  animationcorrect,
+  handleWrong,
+  animationwrong,
+  handleIndex,
+}) {
   let navigate = useNavigate();
   let size = quizQuestions.length;
 
@@ -17,21 +24,25 @@ export default function QuizPart({ handleCorrect }) {
     setSelectedAnswer(x);
   };
 
-  const handleNextQuestion = (e) => {
+  const handleNextQuestion = async (e) => {
     e.preventDefault();
     let check = selectedAnswer === "ai";
 
     if (check === quizQuestions[currentQuestionIndex].answer) {
+      await animationcorrect();
       score = score + 1;
+      handleCorrect(score);
+    } else {
+      await animationwrong();
+      lives--;
+      handleWrong(lives);
     }
-    console.log(score);
-    handleCorrect(score);
 
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     if (currentQuestionIndex === size - 1) {
       navigate("../leaderboard", { replace: true });
     }
-
+    handleIndex(currentQuestionIndex);
     setSelectedAnswer(null);
   };
 
