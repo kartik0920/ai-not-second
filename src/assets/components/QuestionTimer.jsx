@@ -14,13 +14,13 @@ export default function QuestionTime({ index }) {
   }, []); // Dependency array is empty so it runs once per mount
 
   return (
-    <>
+    <div style={{ display: "flex", alignItems: "center" }}>
       <span className="question-title">Question {index + 1}</span>
       <span className="timer">
         {" "}
         <img className="clock" src={clock}></img>
         <span>Time Left :{second}s</span>
       </span>
-    </>
+    </div>
   );
 }
