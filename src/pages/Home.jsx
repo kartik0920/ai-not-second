@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import InternalNavBar from "../assets/components/InternalNavBar";
 import "../assets/styles/LeaderBoard.css";
 import "../assets/styles/Home.css";
@@ -17,9 +17,11 @@ export default function Home() {
   const [wrong, setWrong] = useState(3);
   const [correctani, setCorrectani] = useState(false);
   const [wrongani, setWrongani] = useState(false);
-  // const wrongAudio = new Audio("../src/assets/resources/wrong.mp3");
+  const [second, setTime] = useState(30);
+  const [resetTrigger, setResetTrigger] = useState(false);
+
   const [index, setIndex] = useState(0);
-  let time = 30;
+
   const audioRef = useRef(null);
   const playSound = async () => {
     if (audioRef.current) {
@@ -31,6 +33,18 @@ export default function Home() {
     setIndex(e + 1);
   }
 
+  useEffect(() => {
+    setTime(30);
+    const interval = setInterval(() => {
+      setTime((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+      // handleWrong();
+    };
+  }, [resetTrigger]);
+
   function animateCorrect() {
     setCorrectani(true);
     setTimeout(() => {
@@ -40,17 +54,21 @@ export default function Home() {
   async function animateWrong() {
     await playSound();
     if (navigator.vibrate) {
-      navigator.vibrate(1000); // Vibrates for 1 second
+      navigator.vibrate(1000);
     }
     setWrongani(true);
     setTimeout(() => setWrongani(false), 1000);
   }
 
   function handleCorrect(x) {
+    animateCorrect();
+    setResetTrigger((x) => !x);
     setCorrect(x);
   }
 
   function handleWrong(x) {
+    animateWrong();
+    setResetTrigger((x) => !x);
     if (x === 0) {
       navigate("/", { replace: true });
       alert("You have lost. Try again Later!!");
@@ -69,12 +87,11 @@ export default function Home() {
       <main className="homeMain">
         <div className="rightSideContainer">
           <AIorNot />
-          <QuestionTimer index={index} time={time} />
+          <QuestionTimer index={index} second={second} />
           <QuizPart
             handleCorrect={handleCorrect}
             handleWrong={handleWrong}
             animationcorrect={animateCorrect}
-            animationwrong={animateWrong}
             handleIndex={handleIndex}
           />
         </div>

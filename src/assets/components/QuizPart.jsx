@@ -5,13 +5,7 @@ import { useNavigate } from "react-router";
 export let score = 0;
 export let lives = 3;
 
-export default function QuizPart({
-  handleCorrect,
-  animationcorrect,
-  handleWrong,
-  animationwrong,
-  handleIndex,
-}) {
+export default function QuizPart({ handleCorrect, handleWrong, handleIndex }) {
   let navigate = useNavigate();
   let size = quizQuestions.length;
 
@@ -29,11 +23,9 @@ export default function QuizPart({
     let check = selectedAnswer === "ai";
 
     if (check === quizQuestions[currentQuestionIndex].answer) {
-      await animationcorrect();
       score = score + 1;
       handleCorrect(score);
     } else {
-      await animationwrong();
       lives--;
       handleWrong(lives);
     }

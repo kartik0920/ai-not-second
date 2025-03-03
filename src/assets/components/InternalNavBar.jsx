@@ -14,10 +14,8 @@ export default function InternalNavbar() {
   }
 
   let token = sessionStorage.getItem("token");
-  // let myToken = JSON.parse(token);
-  let myToken = token ? JSON.parse(token) : null;
-  let teamname = myToken?.user_metadata?.teamname || "";
-  // console.log(teamname);
+  let myToken = JSON.parse(token);
+  let teamname = myToken.user.user_metadata.teamname;
 
   return (
     <section className="navbar-login internalNavBar">
@@ -27,13 +25,14 @@ export default function InternalNavbar() {
         </Link>
       </span>
       <div className="profile-teamName">
-        <div className="profile-icon-div">
+        <div className="profile-icon-div" style={{ alignItems: "center" }}>
           <div className="profile-icon-internal">
             <FontAwesomeIcon icon={faUser} size="15px" color="blue" />
           </div>
         </div>
-
-        <div className="teamNameInHeader">{teamname}</div>
+        <div className="teamNameInHeader">
+          {teamname ? teamname : "Team odyssey"}
+        </div>
       </div>
     </section>
   );
