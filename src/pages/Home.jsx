@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import InternalNavBar from "../assets/components/InternalNavBar";
 import "../assets/styles/LeaderBoard.css";
 import "../assets/styles/Home.css";
@@ -17,8 +17,15 @@ export default function Home() {
   const [wrong, setWrong] = useState(3);
   const [correctani, setCorrectani] = useState(false);
   const [wrongani, setWrongani] = useState(false);
-  const wrongAudio = new Audio("../src/assets/resources/wrong.mp3");
+  // const wrongAudio = new Audio("../src/assets/resources/wrong.mp3");
   const [index, setIndex] = useState(0);
+  let time = 30;
+  const audioRef = useRef(null);
+  const playSound = async () => {
+    if (audioRef.current) {
+      await audioRef.current.play();
+    }
+  };
 
   function handleIndex(e) {
     setIndex(e + 1);
@@ -30,8 +37,8 @@ export default function Home() {
       setCorrectani(false);
     }, 700);
   }
-  function animateWrong() {
-    wrongAudio.play();
+  async function animateWrong() {
+    await playSound();
     if (navigator.vibrate) {
       navigator.vibrate(1000); // Vibrates for 1 second
     }
@@ -58,11 +65,11 @@ export default function Home() {
       ${wrongani ? "red-screen shake" : ""}`}
     >
       <InternalNavBar />
-
+      <audio ref={audioRef} src="/wrong.mp3" />
       <main className="homeMain">
         <div className="rightSideContainer">
           <AIorNot />
-          <QuestionTimer index={index} />
+          <QuestionTimer index={index} time={time} />
           <QuizPart
             handleCorrect={handleCorrect}
             handleWrong={handleWrong}

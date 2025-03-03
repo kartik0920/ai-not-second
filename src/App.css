@@ -269,6 +269,7 @@ html {
 }
 
 .timer {
+  display: flex;
   padding: 3px;
   margin: 2px;
   position: absolute;
@@ -280,6 +281,8 @@ html {
   line-height: 21.79px;
   letter-spacing: 0%;
   color: black;
+  align-items: center;
+  gap: 10px;
 }
 
 .clock {
