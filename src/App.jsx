@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [token, setToken] = useState(false);
+
   // console.log(token);
   if (token) {
     sessionStorage.setItem("token", JSON.stringify(token));
@@ -22,7 +23,14 @@ function App() {
         <Route path={"/"} element={<SignInPage setToken={setToken} />} />
         <Route path={"/signup"} element={<SignUpPage />} />
         {token ? <Route path={"/home"} element={<Home token={token} />} /> : ""}
-        {token ? <Route path={"/leaderboard"} element={<LeaderBoard token={token} />} /> : ""}
+        {token ? (
+          <Route
+            path={"/leaderboard"}
+            element={<LeaderBoard token={token} />}
+          />
+        ) : (
+          ""
+        )}
       </Routes>
     </>
   );

@@ -10,8 +10,10 @@ import { quizQuestions } from "../assets/components/Data.js";
 import { score } from "../assets/components/QuizPart";
 import { useNavigate } from "react-router";
 import QuestionTimer from "../assets/components/QuestionTimer.jsx";
+import { supabase } from "../client.js";
 
-export default function Home() {
+export default function Home({ token }) {
+  const id = token ? token.user.id : 0;
   let navigate = useNavigate();
   const [correct, setCorrect] = useState(score);
   const [wrong, setWrong] = useState(3);
@@ -19,8 +21,8 @@ export default function Home() {
   const [wrongani, setWrongani] = useState(false);
   const [second, setTime] = useState(30);
   const [resetTrigger, setResetTrigger] = useState(false);
-
   const [index, setIndex] = useState(0);
+  const [winner, setWinner] = useState([]);
 
   const audioRef = useRef(null);
   const playSound = async () => {
@@ -60,9 +62,28 @@ export default function Home() {
     setTimeout(() => setWrongani(false), 1000);
   }
 
-  function handleCorrect(x) {
+  async function updateCorrect(x) {
+    try {
+      const { now, e } = await supabase
+        .from("profiles") // Use an existing table (it can be any table, even if you don't need to use it)
+        .select("NOW()");
+      if (e) throw error;
+      const { error } = await supabase
+        .from("profiles")
+        .update({ scores: x, last_update: now })
+        .eq("id", id);
+
+      if (error) throw error;
+    } catch (e) {
+      alert(e.message);
+    }
+  }
+
+  async function handleCorrect(x) {
+    await updateCorrect(x);
     animateCorrect();
     setResetTrigger((x) => !x);
+    await getRanks();
     setCorrect(x);
   }
 
@@ -70,10 +91,31 @@ export default function Home() {
     animateWrong();
     setResetTrigger((x) => !x);
     if (x === 0) {
-      navigate("/", { replace: true });
+      navigate("/leaderboard");
       alert("You have lost. Try again Later!!");
     }
     setWrong(x);
+  }
+
+  async function getRanks() {
+    try {
+      const { data: profiles, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .order("scores", { ascending: false })
+        .order("last_update", { ascending: true })
+        .limit(10);
+
+      // .order("scores");
+
+      if (error) throw error;
+
+      if (profiles != null) {
+        setWinner(profiles);
+      }
+    } catch (e) {
+      alert(e);
+    }
   }
 
   let total = quizQuestions.length;
@@ -82,7 +124,7 @@ export default function Home() {
       className={`screen ${correctani ? "green-screen" : ""} 
       ${wrongani ? "red-screen shake" : ""}`}
     >
-      <InternalNavBar />
+      <InternalNavBar token={token} />
       <audio ref={audioRef} src="/wrong.mp3" />
       <main className="homeMain">
         <div className="rightSideContainer">
@@ -93,6 +135,7 @@ export default function Home() {
             handleWrong={handleWrong}
             animationcorrect={animateCorrect}
             handleIndex={handleIndex}
+            getRanks={getRanks}
           />
         </div>
 
@@ -103,7 +146,7 @@ export default function Home() {
             wrong={wrong}
             handleIndex={handleIndex}
           />
-          <LeaderBoardComponent />
+          <LeaderBoardComponent winner={winner} />
         </div>
       </main>
     </div>

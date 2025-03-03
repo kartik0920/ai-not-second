@@ -4,18 +4,11 @@ import { Link, Navigate } from "react-router";
 import { supabase } from "../../client";
 import AiOdysseyLogo from "../resources/AiOdysseyLogo.svg";
 
-export default function InternalNavbar() {
+export default function InternalNavbar({ token }) {
+  let teamname = token ? token.user.user_metadata.teamname : 0;
   async function handleLogout() {
-    sessionStorage.clear();
-    localStorage.clear();
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
-    Navigate("/");
+    Navigate("/leaderboard");
   }
-
-  let token = sessionStorage.getItem("token");
-  let myToken = JSON.parse(token);
-  let teamname = myToken.user.user_metadata.teamname;
 
   return (
     <section className="navbar-login internalNavBar">

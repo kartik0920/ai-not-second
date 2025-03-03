@@ -5,7 +5,12 @@ import { useNavigate } from "react-router";
 export let score = 0;
 export let lives = 3;
 
-export default function QuizPart({ handleCorrect, handleWrong, handleIndex }) {
+export default function QuizPart({
+  handleCorrect,
+  handleWrong,
+  handleIndex,
+  getRanks,
+}) {
   let navigate = useNavigate();
   let size = quizQuestions.length;
 
@@ -29,7 +34,7 @@ export default function QuizPart({ handleCorrect, handleWrong, handleIndex }) {
       lives--;
       handleWrong(lives);
     }
-
+    getRanks();
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     if (currentQuestionIndex === size - 1) {
       navigate("../leaderboard", { replace: true });

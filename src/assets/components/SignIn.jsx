@@ -33,15 +33,15 @@ export default function SignInPage({ setToken }) {
       });
 
       if (error) {
-        alert("Enter Correct username or password");
         throw error;
       }
       if (data) {
         setToken(data);
         navigate("home");
       }
-      // eslint-disable-next-line no-unused-vars, no-empty
-    } catch (error) {}
+    } catch (e) {
+      alert(e.message);
+    }
   }
 
   return (
