@@ -103,8 +103,8 @@ export default function Home({ token }) {
         .from("profiles")
         .select("*")
         .order("scores", { ascending: false })
-        .order("last_update", { ascending: true })
-        .limit(10);
+        .order("last_update", { ascending: false })
+        .limit(5);
 
       // .order("scores");
 
