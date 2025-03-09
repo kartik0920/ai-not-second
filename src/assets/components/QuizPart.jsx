@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { quizQuestions } from "./Data";
-import { redirect, replace, useNavigate } from "react-router";
-// let temp = 0;
+import { useNavigate } from "react-router";
 
-export default function QuizPart({setScore}) {
+export let score = 0;
+export let lives = 3;
+
+export default function QuizPart({
+  setTime,
+  second,
+  handleCorrect,
+  handleWrong,
+  handleIndex,
+  getRanks,
+}) {
   let navigate = useNavigate();
   let size = quizQuestions.length;
 
@@ -16,21 +25,36 @@ export default function QuizPart({setScore}) {
     setSelectedAnswer(x);
   };
 
-  const handleNextQuestion = (e) => {
+   // handling next question after timeout
+   useEffect(()=>{
+    if(second < 1){
+      setTime(10);
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    if (currentQuestionIndex === size - 1) {
+      navigate("../leaderboard", { replace: true });
+    }
+    handleIndex(currentQuestionIndex);
+    }
+  },[second])
+
+
+  const handleNextQuestion = async (e) => {
     e.preventDefault();
     let check = selectedAnswer === "ai";
 
     if (check === quizQuestions[currentQuestionIndex].answer) {
-      // temp = temp + 1;
-      setScore((prev) => prev + 1);
+      score = score + 1;
+      handleCorrect(score);
+    } else {
+      lives--;
+      handleWrong(lives);
     }
-    // console.log(temp);
-
+    getRanks();
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     if (currentQuestionIndex === size - 1) {
       navigate("../leaderboard", { replace: true });
     }
-
+    handleIndex(currentQuestionIndex);
     setSelectedAnswer(null);
   };
 

@@ -34,7 +34,7 @@ html {
   /* width: 100%; */
 }
 
-.navbar-login a{
+.navbar-login a {
   text-decoration: none;
   color: black;
 }
@@ -202,4 +202,94 @@ html {
 .circle_div {
   padding: 5%;
   width: 150px;
+}
+
+/* General Styles */
+.App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.screen {
+  background-color: transparent;
+  transition: background-color 1s ease-in-out;
+}
+
+.green-screen {
+  background-color: rgb(66, 236, 66);
+}
+.red-screen {
+  background-color: rgb(236, 66, 66);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  90% {
+    transform: translateX(-10px);
+  }
+  20%,
+  80% {
+    transform: translateX(10px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-10px);
+  }
+  40%,
+  60% {
+    transform: translateX(10px);
+  }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.question-title {
+  margin-left: 3em;
+  font-family: Open Sans;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 21.79px;
+  letter-spacing: 0%;
+  color: #6a5ae0;
+  align-items: center;
+  text-underline-offset: 8px;
+  text-decoration: underline #6d28d9;
+  text-decoration-thickness: 2px;
+}
+
+.timer {
+  display: flex;
+  padding: 3px;
+  margin: 2px;
+  position: absolute;
+  right: 120px;
+  margin-left: 3em;
+  font-family: Open Sans;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 21.79px;
+  letter-spacing: 0%;
+  color: black;
+  align-items: center;
+  gap: 10px;
+}
+
+.clock {
+  margin: 2px;
+  padding: 2px;
+}
+
+.timer-second {
+  align-items: center;
 }

@@ -1,267 +1,253 @@
-html{
-    --base-color: white;
-    --second-base-color: black;
-    --primary-color: #efeefc;
-    --button-color: #6d28d9;
-    --border-color:#c7acef;
-    --link-color: #8856de;
-    --border-radius: 12px;
-  }
-
-
-  .internalNavBar{
-    width: 100vw;
-    padding-inline: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+html {
+  --base-color: white;
+  --second-base-color: black;
+  --primary-color: #efeefc;
+  --button-color: #6d28d9;
+  --border-color: #c7acef;
+  --link-color: #8856de;
+  --border-radius: 12px;
 }
 
-.navbar-login a{
-    text-decoration: none;
-    color: black;
-  }
-
-  .navbar-login a{
-    text-decoration: none;
-    color: black;
-    width: 400px;
-  }
-  .navbar-login img{
-   width:400px;
-  }
-
-  .profile-teamName{
-    width: 12%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
-  }
-
-  .teamNameInHeader{
-    font-size: large;
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
-
-.profile-icon-div{
-    width: 40px;
-    height: 40px;
-    /* border: 1px solid black; */
-    padding: 0.4rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
+.internalNavBar {
+  width: 100vw;
+  padding-inline: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.profile-icon-internal{
-    width: 90%;
-    height: 90%;
-    border: 1px solid blue;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content:flex-end;
-    overflow: hidden;
+.navbar-login a {
+  text-decoration: none;
+  color: black;
 }
 
-
-.homeMain{
-    display: flex;
-    flex-direction: row-reverse;
-    padding: 3rem 4rem;
+.navbar-login a {
+  text-decoration: none;
+  color: black;
+  width: 400px;
+}
+.navbar-login img {
+  width: 400px;
 }
 
+.profile-teamName {
+  width: 12%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  white-space: nowrap;
+  gap: 4px;
+}
+
+.teamNameInHeader {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-left: 3px;
+}
+
+.profile-icon-div {
+  width: 40px;
+  height: 40px;
+  /* border: 1px solid black; */
+  padding: 0.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.profile-icon-internal {
+  width: 90%;
+  height: 90%;
+  border: 1px solid blue;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.homeMain {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 3rem 4rem;
+}
 
 .game-section {
-    flex: 2;
-    padding: 40px;
-    text-align: center;
-    z-index: 2;
-    
+  flex: 2;
+  padding: 40px;
+  text-align: center;
+  z-index: 2;
 }
 
 .game-section h2 {
-    font-size: 2em;
-    color: #000;
-    margin-bottom: 20px;
-    font-weight: 600;
+  font-size: 2em;
+  color: #000;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .game-section p {
-    font-size: 1em;
-    color: #4b5563;
-    line-height: 1.5;
-    margin-bottom: 30px;
-    /* border: 2px solid #6a5ae0; */
-    border-radius: 15px;
-    padding: 25px 2rem;
-    background: var(--primary-color);
+  font-size: 1em;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  /* border: 2px solid #6a5ae0; */
+  border-radius: 15px;
+  padding: 25px 2rem;
+  background: var(--primary-color);
 }
 
 .options {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
 .options label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    border-radius: 9px;
-    cursor: pointer;
-    border: 2px solid #7f6eff;
-    color: rgb(98, 86, 192);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  border-radius: 9px;
+  cursor: pointer;
+  border: 2px solid #7f6eff;
+  color: rgb(98, 86, 192);
 }
-.options label:hover{
-    border: 2px solid #6A5AE0;
-
+.options label:hover {
+  border: 2px solid #6a5ae0;
 }
 
 input[type="radio"] {
-    accent-color: #6A5AE0; 
+  accent-color: #6a5ae0;
 }
 
 .submit-btn {
-    padding: 15px 30px;
-    background-color: #6A5AE0;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 8rem;
+  padding: 15px 30px;
+  background-color: #6a5ae0;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 8rem;
 }
-
 
 .submit-btn:hover {
-    background-color: #5749c0;
+  background-color: #5749c0;
 }
 
-.t-head{
-    display:flex;
-    flex-direction: column;
+.t-head {
+  display: flex;
+  flex-direction: column;
 }
 
-.t-heading{
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #0C092A;
+.t-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0c092a;
 }
 
-.t-points{
-    font-size: 0.9rem;
-    color: #A39FA1;
+.t-points {
+  font-size: 0.9rem;
+  color: #a39fa1;
 }
 
-.leader_span{
-    display: flex;
-    justify-content:center;
-    align-items:center;
-    gap: 20px;
+.leader_span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
-
 
 .sidebar {
-    flex: 1;
-     /* padding: 1rem; */
-     margin-bottom: 1rem;
-    /* width: 100%;  */
+  flex: 1;
+  /* padding: 1rem; */
+  margin-bottom: 1rem;
+  /* width: 100%;  */
 }
 
 .progress {
-    /* margin-bottom: 30px; */
-    border-radius: 20px;
-    padding:33px 12px;
-    position: relative;
-    background-color: #e8e5fa;
+  /* margin-bottom: 30px; */
+  border-radius: 20px;
+  padding: 33px 12px;
+  position: relative;
+  background-color: #e8e5fa;
 }
 
-
-.level{
-    font-size: 1.3rem;
-    margin: 0.8rem 0.3rem;
-
+.level {
+  font-size: 1.3rem;
+  margin: 0.8rem 0.3rem;
 }
-.circle_div{
-    position: absolute;
-    top: 5%;
-    left: 60%;
-    width: 140px;
-        height: 140px; 
-
+.circle_div {
+  position: absolute;
+  top: 5%;
+  left: 60%;
+  width: 140px;
+  height: 140px;
 }
 .hearts {
-    margin-top: 6px;
-    background-color: white;
-    padding: 6px 15px;
-    border-radius: 9px;
-    display: inline-block;
+  margin-top: 6px;
+  background-color: white;
+  padding: 6px 15px;
+  border-radius: 9px;
+  display: inline-block;
 }
 
-.heartsEmoji{
-    display:flex;
-    gap:6px;
-    justify-content:center;
-    align-items:center;
-    margin-top: 4px;
+.heartsEmoji {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
 }
 
-.score{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+.score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-.score_data{
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    
+.score_data {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }
 
 .score h1 {
-    font-size: 2.5em;
-    font-weight:500;
-    margin:0;
+  font-size: 2.5em;
+  font-weight: 500;
+  margin: 0;
 }
 .score h2 {
-    color:hsl(250.43deg 14.29% 68.43%);
-    font-weight:500;
-    margin:0;
+  color: hsl(250.43deg 14.29% 68.43%);
+  font-weight: 500;
+  margin: 0;
 }
-.score p{
-    color:hsl(250.43deg 14.29% 68.43%);
-    font-weight:500;
-    margin:0;
-    margin-top: -5px;
-}
-
-
-#img_one{
-    margin-left:2rem ;
-    font-size: 5rem;
+.score p {
+  color: hsl(250.43deg 14.29% 68.43%);
+  font-weight: 500;
+  margin: 0;
+  margin-top: -5px;
 }
 
-
-.sideContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-    max-width: 350px;
-    width: 100%;
+#img_one {
+  margin-left: 2rem;
+  font-size: 5rem;
 }
 
-
-
+.sideContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  max-width: 350px;
+  width: 100%;
+}

@@ -37,4 +37,7 @@ export const quizQuestions = [
   },
 ];
 
+const token = sessionStorage.getItem("token");
+export let myToken = JSON.parse(token);
+export const teamname = myToken ? myToken.user.user_metadata.teamname : 0;
 export const options = ["It's an AI", "It's not an AI"];
