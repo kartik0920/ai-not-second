@@ -131,8 +131,8 @@ export default function Home({ token }) {
           <AIorNot />
           <QuestionTimer index={index} second={second} />
           <QuizPart
-          second={second}
-          setTime={setTime}
+            second={second}
+            setTime={setTime}
             handleCorrect={handleCorrect}
             handleWrong={handleWrong}
             animationcorrect={animateCorrect}

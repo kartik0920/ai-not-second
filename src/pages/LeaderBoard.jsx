@@ -7,7 +7,7 @@ import { supabase } from "../client";
 
 import "../assets/styles/Home.css";
 import "../assets/styles/LeaderBoard.css";
-export default function LeaderBoard() {
+export default function LeaderBoard({ token }) {
   const [winner, setWinner] = useState([]);
   async function getRanks() {
     try {
@@ -16,7 +16,7 @@ export default function LeaderBoard() {
         .select("*")
         .order("scores", { ascending: false })
         .order("last_update", { ascending: true })
-        .limit(10);
+        .limit(5);
 
       // .order("scores");
 
@@ -31,7 +31,7 @@ export default function LeaderBoard() {
   }
   return (
     <div onLoad={getRanks}>
-      <InternalNavbar />
+      <InternalNavbar token={token} />
       <AIorNot />
       <div className="leader-winner-container">
         <LeaderBoardComponent winner={winner} />

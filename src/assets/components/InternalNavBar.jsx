@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link, Navigate } from "react-router";
-import { supabase } from "../../client";
 import AiOdysseyLogo from "../resources/AiOdysseyLogo.svg";
 
 export default function InternalNavbar({ token }) {
